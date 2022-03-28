@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <title>directives</title>
+    <script src="../vue.global.js"></script>
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div id="app">
+      <p v-on:[event_name]="updateSeen" v-if="seen">Click to hide.</p>
+      <a v-on:[event_name]="updateText" v-bind:href="url" target="_blank"> {{ text }} </a>
+      <br />
+      <a @[event_name]="updateText" :href="url" target="_blank"> {{ text }} </a>
+    </div>
+
+    <script type="module">
+      const { createApp } = Vue;
+      const App = {
+        methods: {
+          updateSeen() {
+            this.seen = false;
+          },
+          updateText() {
+            this.text = "Job done.";
+          },
+        },
+        data() {
+          return {
+            event_name: "click",
+            seen: true,
+            text: "Click to jump.",
+            url: "/",
+          };
+        },
+      };
+
+      createApp(App).mount("#app");
+    </script>
+  </body>
+</html>

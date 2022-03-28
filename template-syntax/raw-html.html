@@ -2,7 +2,7 @@
 <html lang="zh-cn">
   <head>
     <meta charset="UTF-8" />
-    <title>text-interpolation</title>
+    <title>raw-html</title>
     <script src="../vue.global.js"></script>
     <link ref="icon" href="data:," />
   </head>
@@ -13,15 +13,17 @@
     </div>
     <script type="module">
       import { html } from "../lib.js";
-      const { createApp } = Vue;
 
-      createApp({
+      const { createApp } = Vue;
+      const App = {
         data() {
           return {
             rawHtml: html`<span style="color: red">This should be red.</span>`,
           };
         },
-      }).mount("#app");
+      };
+
+      createApp(App).mount("#app");
     </script>
   </body>
 </html>

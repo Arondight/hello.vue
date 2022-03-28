@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <title>使用-javascript-表达式</title>
+    <script src="../vue.global.js"></script>
+    <link ref="icon" href="data:," />
+  </head>
+  <body>
+    <div id="app">
+      <div :id="`list-${id}`">
+        {{ number + 1 }} <br />{{ ok ? 'YES' : 'NO' }}<br />
+        {{ message.split('').reverse().join('') }} <br />
+        <span :title="toTitleDate(date)"> {{ formatDate(date) }} </span>
+      </div>
+    </div>
+    <script type="module">
+      const { createApp } = Vue;
+      const App = {
+        setup() {
+          return {
+            toTitleDate(date) {
+              return date.valueOf();
+            },
+            formatDate(date) {
+              return date.toLocaleString();
+            },
+            date: new Date(),
+            number: 10,
+            ok: true,
+            message: "Hello World!",
+            id: "100",
+            date: new Date(),
+          };
+        },
+      };
+
+      createApp(App).mount("#app");
+    </script>
+  </body>
+</html>

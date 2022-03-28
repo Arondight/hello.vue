@@ -12,14 +12,15 @@
     </div>
     <script type="module">
       const { createApp } = Vue;
-
-      createApp({
+      const App = {
         data() {
           return {
             count: 0,
           };
         },
-      }).mount("#app");
+      };
+
+      createApp(App).mount("#app");
     </script>
   </body>
 </html>
