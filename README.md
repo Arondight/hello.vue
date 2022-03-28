@@ -9,6 +9,7 @@ Source code of [vuejs-translations/docs-zh-cn](https://github.com/vuejs-translat
 ```
 git clone https://github.com/Arondight/hello.vue.git
 cd ./hello.vue/
+npm install
 npm start
 xdg-open http://localhost:8796
 ```

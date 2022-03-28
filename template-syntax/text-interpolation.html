@@ -2,21 +2,23 @@
 <html lang="zh-cn">
   <head>
     <meta charset="UTF-8" />
-    <title>what-is-vue</title>
+    <title>text-interpolation</title>
     <script src="../vue.global.js"></script>
-    <link rel="icon" href="data:," />
+    <link ref="icon" href="data:," />
   </head>
   <body>
     <div id="app">
-      <button @click="count++">Count is: {{ count }}</button>
+      <p>Using text interpolation: {{ rawHtml }}</p>
+      <p>Using v-html directive: <span v-html="rawHtml"></span></p>
     </div>
     <script type="module">
+      import { html } from "../lib.js";
       const { createApp } = Vue;
 
       createApp({
         data() {
           return {
-            count: 0,
+            rawHtml: html`<span style="color: red">This should be red.</span>`,
           };
         },
       }).mount("#app");
