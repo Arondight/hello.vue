@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <title>what-is-vue</title>
+    <script src="../vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <button @click="count++">Count is: {{ count }}</button>
+    </div>
+    <script type="module">
+      const { createApp } = Vue;
+
+      createApp({
+        data() {
+          return {
+            count: 0,
+          };
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>

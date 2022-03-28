@@ -1,0 +1,19 @@
+{
+  "name": "hello.vue",
+  "version": "0.0.1",
+  "description": "Source code of https://github.com/vuejs-translations/docs-zh-cn.git",
+  "repository": "https://github.com/Arondight/hello.vue.git",
+  "homepage": "https://github.com/Arondight/hello.vue",
+  "bugs": "https://github.com/Arondight/hello.vue/issues",
+  "author": "Qin Fandong",
+  "license": "MIT",
+  "keywords": [
+    "vue"
+  ],
+  "scripts": {
+    "start": "npx prettier --config ./.prettierrc.json -uw ./*.md ./.*.json ./*.json ./*/*.html"
+  },
+  "dependencies": {
+    "prettier": "2.6.1"
+  }
+}
