@@ -2,7 +2,7 @@
 
 ## ABOUT
 
-Source code of [vuejs-translations/docs-zh-cn](https://github.com/vuejs-translations/docs-zh-cn.git).
+My exercises of [vuejs-translations/docs-zh-cn](https://github.com/vuejs-translations/docs-zh-cn.git).
 
 ## USAGE
 

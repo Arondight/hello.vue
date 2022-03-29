@@ -20,11 +20,11 @@
           };
         },
         mounted() {
-          const objNew = {};
+          const obj2 = {};
 
-          this.obj = objNew; // Proxy
+          this.obj = obj2; // this.obj is a Proxy (handler with get and set)
           alert(`this.count is ${this.count++}.`);
-          alert(`this.obj === objNew is ${this.obj === objNew}`);
+          alert(`this.obj === obj2 is ${this.obj === obj2}`);
         },
       };
 
