@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ref-unwrapping-in-reactive-objects</title>
+    <script src="../vue.global.js"></script>
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div id="app">
+      <p>{{ obj.nested.count }}</p>
+      <p>{{ obj.arr.join(", ") }}</p>
+      <button @click="mutateDeeply">Update</button>
+    </div>
+    <script type="module">
+      const { createApp } = Vue;
+      const App = {
+        data() {
+          return {
+            obj: {
+              nested: { count: 0 },
+              arr: ["foo", "bar"],
+            },
+          };
+        },
+        methods: {
+          mutateDeeply() {
+            this.obj.nested.count++;
+            this.obj.arr.push("baz");
+          },
+        },
+      };
+
+      createApp(App).mount("#app");
+    </script>
+  </body>
+</html>
