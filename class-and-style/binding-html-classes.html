@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <title>binding-html-classes</title>
+    <script src="../vue.global.js"></script>
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div id="app">
+      <div id="div1" class="static" :class="{ active: isActive, 'text-danger': hasError }">
+        <p>div1</p>
+        <p>Press Ctrl + Shift + C to watch an DOM and click buttons below</p>
+      </div>
+      <div id="div2" :class="classObject">
+        <p>div2</p>
+        <button @click="switchActive2">Switch div2</button>
+      </div>
+      <div id="div3" :class="classObject2">
+        <p>div3</p>
+        <button @click="switchActive13">Switch div1, div3 and div4</button>
+      </div>
+      <div id="div4" :class="[{active: isActive}, true === hasError ? errorClass : '']">
+        <p>div4</p>
+      </div>
+      <div id="div5" :style="{ color: activeColor, fontSize: fontSize + 'px' }">
+        <p>div5</p>
+      </div>
+      <div id="div6" :style="{ 'font-size': fontSize + 'px' }">
+        <p>div6</p>
+      </div>
+      <div id="div7" :style="styleObject">
+        <p>div7</p>
+      </div>
+      <div id="div8" :style="[baseStyles, overridingStyles]">
+        <p>div8</p>
+      </div>
+      <div id="div9" :style="{ display: ['-webkit-box', '-ms-flexbox', 'flex'] }">
+        <p>div9</p>
+      </div>
+    </div>
+    <script type="module">
+      const { createApp } = Vue;
+      const App = {
+        data() {
+          return {
+            isActive: true,
+            hasError: false,
+            classObject: {
+              active: true,
+              "text-danger": false,
+            },
+            errorClass: "text-danger",
+            activeColor: "red",
+            fontSize: 30,
+            styleObject: {
+              color: "red",
+              fontSize: "13px",
+            },
+            baseStyles: "color: red",
+            overridingStyles: "fontSize: 13px",
+          };
+        },
+        computed: {
+          classObject2() {
+            return {
+              active: this.isActive,
+              "text-danger": this.hasError,
+            };
+          },
+        },
+        methods: {
+          switchActive13() {
+            this.isActive = !this.isActive;
+            this.hasError = !this.hasError;
+          },
+          switchActive2() {
+            this.classObject.active = !this.classObject.active;
+            this.classObject["text-danger"] = !this.classObject["text-danger"];
+          },
+        },
+      };
+
+      createApp(App).mount("#app");
+    </script>
+  </body>
+</html>
