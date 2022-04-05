@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <title>computed-caching-vs-methods</title>
+    <script src="../vue.global.js"></script>
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div id="app">
+      <button @click="now();now1()">update</button>
+      <p>{{ date }}</p>
+      <p>{{ date1 }}</p>
+    </div>
+    <script type="module">
+      const { createApp } = Vue;
+      const App = {
+        data() {
+          return {
+            date: 0,
+            date1: 0,
+          };
+        },
+        methods: {
+          now() {
+            this.date = Date.now();
+          },
+        },
+        computed: {
+          now1() {
+            this.date1 = Date.now();
+          },
+        },
+      };
+
+      createApp(App).mount("#app");
+    </script>
+  </body>
+</html>

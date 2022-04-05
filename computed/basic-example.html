@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <title>basic-example</title>
+    <script src="../vue.global.js"></script>
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div id="app">
+      <p>Has published books:</p>
+      <span>{{ publishedBooksMessage }}</span>
+    </div>
+    <script type="module">
+      const { createApp } = Vue;
+      const App = {
+        data() {
+          return {
+            author: {
+              name: "John Doe",
+              books: ["Vue 2 - Advanced Guide", "Vue 3 - Basic Guide", "Vue 4 - The Mystery"],
+            },
+          };
+        },
+        computed: {
+          publishedBooksMessage() {
+            return this.author.books.length > 0 ? "Yes" : "No";
+          },
+        },
+      };
+
+      createApp(App).mount("#app");
+    </script>
+  </body>
+</html>

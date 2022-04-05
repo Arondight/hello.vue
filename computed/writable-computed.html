@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <title>writable-computed</title>
+    <script src="../vue.global.js"></script>
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div id="app">
+      <div>
+        <span>Input full name: </span>
+        <label>
+          <input type="text" v-model="input" />
+        </label>
+        <button @click="newName">Update</button>
+      </div>
+      <text>Name is {{ fullName }}</text>
+    </div>
+    <script type="module">
+      const { createApp } = Vue;
+      const App = {
+        data() {
+          return {
+            firstName: "John",
+            lastName: "Doe",
+            input: "",
+          };
+        },
+        computed: {
+          fullName: {
+            get() {
+              return `${this.firstName} ${this.lastName}`;
+            },
+            set(name) {
+              [this.firstName, this.lastName] = name.split(/\s/);
+            },
+          },
+        },
+        methods: {
+          newName() {
+            this.fullName = this.input;
+          },
+        },
+      };
+
+      createApp(App).mount("#app");
+    </script>
+  </body>
+</html>
