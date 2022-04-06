@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <title>v-for</title>
+    <script src="../vue.global.js"></script>
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div id="app">
+      <ul>
+        <li v-for="item of items">{{ item.message }}</li>
+        <li v-for="(item, index) of items">{{ parentMessage }} - {{ index }} - {{ item.message }}</li>
+        <li v-for="{ message } of items">{{ message }}</li>
+        <li v-for="({ message }, index) of items">{{ message }} {{ index }}</li>
+        <li>
+          children
+          <ul v-for="item of items">
+            <li v-for="childItem of item.children">{{ item.message }} {{ childItem }}</li>
+          </ul>
+        </li>
+        <li v-for="item in items">{{ item.message }}</li>
+      </ul>
+    </div>
+    <script type="module">
+      const { createApp } = Vue;
+      const App = {
+        data() {
+          return {
+            parentMessage: "Parent",
+            items: [
+              { message: "Foo", children: ["Foo1", "Foo2"] },
+              { message: "Bar", children: ["Bar1", "Bar2"] },
+            ],
+          };
+        },
+      };
+
+      createApp(App).mount("#app");
+    </script>
+  </body>
+</html>

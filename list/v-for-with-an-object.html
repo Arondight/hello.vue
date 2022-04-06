@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <title>v-for-with-an-object</title>
+    <script src="../vue.global.js"></script>
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div id="app">
+      <ul>
+        <li>
+          value of myObject
+          <ul v-for="value of myObject">
+            <li>{{ value }}</li>
+          </ul>
+        </li>
+        <li>
+          (value, key) of myObject
+          <ul v-for="(value, key) of myObject">
+            <li>
+              {{ value }}
+              <ul>
+                <li>{{ key }}</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          (value, key, index) of myObject
+          <ul v-for="(value, key, index) of myObject">
+            <li>
+              {{ value }}
+              <ul>
+                <li>{{ key }}</li>
+                <li>{{ index }}</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <script type="module">
+      const { createApp } = Vue;
+      const App = {
+        data() {
+          return {
+            myObject: {
+              title: "How to do lists in Vue",
+              author: "Jane Doe",
+              publishedAt: "2016-04-10",
+            },
+          };
+        },
+      };
+
+      createApp(App).mount("#app");
+    </script>
+  </body>
+</html>
