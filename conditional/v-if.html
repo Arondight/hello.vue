@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <title>v-if</title>
+    <script src="../vue.global.js"></script>
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div id="app">
+      <button @click="change">Toggle</button>
+      <h1 v-if="awesome">Vue is awesome!</h1>
+    </div>
+    <script type="module">
+      const { createApp } = Vue;
+      const App = {
+        data() {
+          return {
+            awesome: true,
+          };
+        },
+        methods: {
+          change() {
+            this.awesome = !this.awesome;
+          },
+        },
+      };
+
+      createApp(App).mount("#app");
+    </script>
+  </body>
+</html>
