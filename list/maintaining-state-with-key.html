@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <title>maintaining-state-with-key</title>
+    <script src="../vue.global.js"></script>
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div id="app">
+      <div>
+        <input v-model="text" />
+        <button @click="add">Add</button>
+        <button @click="reset">Reset</button>
+      </div>
+      <div>
+        <ul>
+          <li>
+            v-for
+            <ul>
+              <li v-for="item of items"><input type="checkbox" />{{ item.name }}</li>
+            </ul>
+          </li>
+          <li>
+            v-for with :key
+            <ul>
+              <li v-for="item of items" :key="item.name"><input type="checkbox" />{{ item.name }}</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <script type="module">
+      const { createApp } = Vue;
+      const App = {
+        data() {
+          const defaultItems = [{ name: "AA" }, { name: "BB" }, { name: "CC" }];
+
+          return {
+            text: "",
+            defaultItems,
+            items: [...defaultItems],
+          };
+        },
+        methods: {
+          add() {
+            this.items.unshift({ name: this.text });
+            this.text = "";
+          },
+          reset() {
+            this.items = [...this.defaultItems];
+          },
+        },
+      };
+
+      createApp(App).mount("#app");
+    </script>
+  </body>
+</html>
