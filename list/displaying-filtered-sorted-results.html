@@ -8,6 +8,7 @@
   </head>
   <body>
     <div id="app">
+      <p>{{ sets }}</p>
       <ul v-for="set of sets">
         <li v-for="n of sort(set)">{{ n }}</li>
       </ul>
@@ -25,7 +26,7 @@
         },
         methods: {
           sort(set) {
-            return set.sort((a, b) => b - a);
+            return [...set].sort((a, b) => b - a);
           },
         },
       };
