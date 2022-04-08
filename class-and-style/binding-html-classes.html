@@ -10,7 +10,7 @@
     <div id="app">
       <div id="div1" class="static" :class="{ active: isActive, 'text-danger': hasError }">
         <p>div1</p>
-        <p>Press Ctrl + Shift + C to watch an DOM and click buttons below</p>
+        <p>Press Ctrl + Shift + C to watch DOM tree and click buttons below</p>
       </div>
       <div id="div2" :class="classObject">
         <p>div2</p>
@@ -40,7 +40,7 @@
       </div>
     </div>
     <script type="module">
-      const { createApp } = Vue;
+      const { createApp } = window.Vue;
       const App = {
         data() {
           return {

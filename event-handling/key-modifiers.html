@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <title>key-modifiers</title>
+    <script src="../vue.global.js"></script>
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div id="app">
+      <div>
+        <p>
+          <a :href="mdn" target="_blank">MDN document</a>
+        </p>
+      </div>
+      <div>
+        <h1>{{ text }}</h1>
+      </div>
+      <div>
+        <input @keyup.enter="enter" value="Input and press enter" />
+      </div>
+      <div>
+        <input ref="inputRef" @keyup.alt.ctrl="altCtrl" :value="defaultInput" />
+      </div>
+    </div>
+    <script type="module">
+      const { createApp, onMounted, ref } = window.Vue;
+      const App = {
+        setup() {
+          const inputRef = ref(null);
+          return {
+            inputRef,
+          };
+        },
+        data() {
+          const defaultText = "key-modifiers";
+          const defaultInput = "Input something and press alt ctrl to reset";
+          return {
+            mdn: "https://developer.mozilla.org/zh-CN/docs/Web/API/KeyboardEvent",
+            defaultText,
+            defaultInput,
+            text: defaultText,
+          };
+        },
+        methods: {
+          enter(event) {
+            if (event) {
+              this.text = event.target.value || this.defaultText;
+            }
+          },
+          altCtrl() {
+            this.inputRef.value = this.defaultInput;
+          },
+        },
+      };
+
+      createApp(App).mount("#app");
+    </script>
+  </body>
+</html>

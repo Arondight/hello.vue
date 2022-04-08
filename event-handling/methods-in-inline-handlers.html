@@ -2,26 +2,22 @@
 <html lang="zh-cn">
   <head>
     <meta charset="UTF-8" />
-    <title>v-if-on-template</title>
+    <title>methods-in-inline-handlers</title>
     <script src="../vue.global.js"></script>
     <link rel="icon" href="data:," />
   </head>
   <body>
     <div id="app">
-      <button @click="ok = !ok">Toggle</button>
-      <template v-if="ok">
-        <h1>Title</h1>
-        <p>Paragraph 1</p>
-        <p>Paragraph 2</p>
-      </template>
+      <button @click="say('Hello')">Say hello</button>
+      <button @click="say('Bye')">Say bye</button>
     </div>
     <script type="module">
       const { createApp } = window.Vue;
       const App = {
-        data() {
-          return {
-            ok: true,
-          };
+        methods: {
+          say(message) {
+            alert(message);
+          },
         },
       };
 

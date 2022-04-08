@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <title>event-modifiers</title>
+    <script src="../vue.global.js"></script>
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div id="app">
+      <div>
+        <p>
+          <a :href="mdn" target="_blank">MDN document</a>
+        </p>
+        <p>Press Ctrl + Shift + K to watch console and click buttons below</p>
+      </div>
+      <div>
+        <ul>
+          <li>
+            <button @click="handler1">handler's default argument for v-bind:click is a MouseEvent</button>
+          </li>
+          <li>
+            <button @click="handler2(1<<8, $event)">handler with argument and event</button>
+          </li>
+          <li>
+            <button @click="handler1($event), handler2(1<<8, $event)">multiple handlers</button>
+          </li>
+          <li @click="handlerOuter">
+            <button @click="handlerInner">outer and inner handlers</button>
+          </li>
+          <li @click="handlerOuter">
+            <button @click.stop="handlerInner">inner handlers with stop</button>
+          </li>
+          <li @click.capture="handlerOuter">
+            <button @click="handlerInner">outer and inner handlers with capture</button>
+          </li>
+          <li>
+            <button @click.once="handler1">handler with once</button>
+          </li>
+          <li>
+            <button @click.prevent="handler1">handler with prevent</button>
+          </li>
+          <li>
+            <button @click.left="mouseLeft">Mouse left click</button>
+          </li>
+          <li>
+            <button @click.right="mouseRight">Mouse right click</button>
+          </li>
+          <li>
+            <button @click.middle="mouseMiddle">Mouse middle click</button>
+          </li>
+        </ul>
+      </div>
+      <div @click.self="handlerOuter">
+        Click me (outer handlers with self)
+        <button @click="handlerInner">inner handlers</button>
+      </div>
+    </div>
+    <script type="module">
+      const { createApp } = window.Vue;
+      const App = {
+        data() {
+          return {
+            mdn: "https://developer.mozilla.org/zh-CN/docs/Web/API/MouseEvent",
+          };
+        },
+        methods: {
+          handler1(event) {
+            console.log(event);
+          },
+          handler2(o, event) {
+            console.log(o);
+            console.log(event);
+          },
+          handlerOuter() {
+            console.log("outer handler");
+          },
+          handlerInner() {
+            console.log("inner handler");
+          },
+          mouseLeft() {
+            console.log("mouse left");
+          },
+          mouseRight() {
+            console.log("mouse right");
+          },
+          mouseMiddle() {
+            console.log("mouse middle");
+          },
+        },
+      };
+
+      createApp(App).mount("#app");
+    </script>
+  </body>
+</html>
