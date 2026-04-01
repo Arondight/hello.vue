@@ -17,12 +17,12 @@
     "format": "npx prettier --config ./.prettierrc.json -uw ./app.js ./*.md ./.*.json ./*.json ./*/*.html"
   },
   "dependencies": {
-    "cross-env": "7.0.3",
-    "express": "4.22.1",
-    "serve-index": "1.9.1",
-    "yargs": "17.4.0"
+    "cross-env": "10.1.0",
+    "express": "5.2.1",
+    "serve-index": "1.9.2",
+    "yargs": "18.0.0"
   },
   "devDependencies": {
-    "prettier": "2.6.1"
+    "prettier": "3.8.1"
   }
 }
